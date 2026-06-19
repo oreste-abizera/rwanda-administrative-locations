@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rwanda Administrative Locations API
 
-## Getting Started
+A comprehensive, public REST API providing the complete administrative geography of Rwanda. Built with Next.js and powered by interactive Swagger documentation.
 
-First, run the development server:
+## Features
+
+- **Full Coverage**: Query Provinces, Districts, Sectors, Cells, and Villages across Rwanda.
+- **Fast & Lightweight**: Built with the Next.js App Router for optimal, serverless performance.
+- **Interactive Documentation**: Beautiful built-in Swagger UI to explore and test endpoints directly from your browser.
+- **Search & Pagination**: Find locations easily with text-based search and paginated responses.
+- **CORS Enabled**: Ready to be consumed publicly from any frontend application.
+
+## Endpoints Overview
+
+All endpoints are completely public.
+
+- `GET /api/provinces` - Get all provinces.
+- `GET /api/districts?province={name|code}` - Get all districts or filter by province.
+- `GET /api/sectors?district={name|code}` - Get all sectors or filter by district.
+- `GET /api/cells?sector={name|code}` - Get all cells or filter by sector.
+- `GET /api/villages?cell={name|code}` - Get all villages or filter by cell.
+- `GET /api/locations?q={query}&page={page}&limit={limit}` - Comprehensive text search across all administrative levels.
+
+## Getting Started Locally
+
+First, clone the repository, install dependencies, and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then, open [http://localhost:3000](http://localhost:3000) with your browser to see the interactive Swagger UI.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This application is fully optimized to be deployed on Vercel. 
+You can import your repository directly into [Vercel](https://vercel.com/) for zero-config deployment.
 
-## Learn More
+## Credits
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by **Oreste Abizera**. Visit [oreste.dev](https://oreste.dev) for more.
