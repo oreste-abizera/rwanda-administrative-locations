@@ -10,6 +10,12 @@ A comprehensive, public REST API providing the complete administrative geography
 - **Search & Pagination**: Find locations easily with text-based search and paginated responses.
 - **CORS Enabled**: Ready to be consumed publicly from any frontend application.
 
+## Live API & Documentation
+
+This API is publicly hosted and ready for use in your applications. You can view the interactive Swagger documentation and test the endpoints directly at either of these URLs:
+- **Primary**: [https://rwanda-locations.oreste.dev](https://rwanda-locations.oreste.dev)
+- **Vercel**: [https://rwanda-administrative-locations.vercel.app](https://rwanda-administrative-locations.vercel.app)
+
 ## Endpoints Overview
 
 All endpoints are completely public.
