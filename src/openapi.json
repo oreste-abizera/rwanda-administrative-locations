@@ -1,0 +1,167 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Rwanda Administrative Locations API",
+    "version": "1.0.0",
+    "description": "Public API to retrieve administrative locations of Rwanda including Provinces, Districts, Sectors, Cells, and Villages."
+  },
+  "servers": [
+    {
+      "url": "/api",
+      "description": "Relative URL"
+    }
+  ],
+  "paths": {
+    "/provinces": {
+      "get": {
+        "summary": "Get all provinces",
+        "description": "Returns a unique list of all provinces in Rwanda.",
+        "responses": {
+          "200": {
+            "description": "A list of provinces",
+            "content": {
+              "application/json": {
+                "example": [
+                  { "province_code": 1, "province_name": "KIGALI" },
+                  { "province_code": 2, "province_name": "SOUTHERN PROVINCE" }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/districts": {
+      "get": {
+        "summary": "Get districts",
+        "description": "Returns a list of districts. Can be filtered by province.",
+        "parameters": [
+          {
+            "name": "province",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "Filter by province name or code (e.g., 'KIGALI' or '1')"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of districts"
+          }
+        }
+      }
+    },
+    "/sectors": {
+      "get": {
+        "summary": "Get sectors",
+        "description": "Returns a list of sectors. Can be filtered by district or province.",
+        "parameters": [
+          {
+            "name": "district",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "Filter by district name or code"
+          },
+          {
+            "name": "province",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of sectors"
+          }
+        }
+      }
+    },
+    "/cells": {
+      "get": {
+        "summary": "Get cells",
+        "description": "Returns a list of cells. Can be filtered by sector or district.",
+        "parameters": [
+          {
+            "name": "sector",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "Filter by sector name or code"
+          },
+          {
+            "name": "district",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of cells"
+          }
+        }
+      }
+    },
+    "/villages": {
+      "get": {
+        "summary": "Get villages",
+        "description": "Returns a list of villages. Can be filtered by cell or sector.",
+        "parameters": [
+          {
+            "name": "cell",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "Filter by cell name or code"
+          },
+          {
+            "name": "sector",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of villages"
+          }
+        }
+      }
+    },
+    "/locations": {
+      "get": {
+        "summary": "Search locations",
+        "description": "Search across all administrative levels with pagination.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" },
+            "description": "Search term to filter by village, cell, sector, district, or province name"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 1 },
+            "description": "Page number for pagination"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 50 },
+            "description": "Number of results per page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated locations data"
+          }
+        }
+      }
+    }
+  }
+}
